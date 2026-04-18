@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
+import { X, Play } from 'lucide-react'
 import Image from 'next/image'
 
 type PortfolioItem = {
@@ -14,62 +14,14 @@ type PortfolioItem = {
 }
 
 const portfolioItems: PortfolioItem[] = [
-  {
-    id: '1',
-    title: 'Cyberpunk Illustration',
-    category: 'illustration',
-    image: 'https://images.unsplash.com/photo-1578926078328-123456789012?w=600&h=600&fit=crop',
-    type: 'image',
-  },
-  {
-    id: '2',
-    title: 'VFX Explosion',
-    category: 'video',
-    image: 'https://images.unsplash.com/photo-1536717177296-4f6ee49e5c9f?w=600&h=600&fit=crop',
-    type: 'image',
-  },
-  {
-    id: '3',
-    title: 'Album Cover Design',
-    category: 'design',
-    image: 'https://images.unsplash.com/photo-1611339555312-e607c04352fd?w=600&h=600&fit=crop',
-    type: 'image',
-  },
-  {
-    id: '4',
-    title: 'Character Animation',
-    category: 'illustration',
-    image: 'https://images.unsplash.com/photo-1535016120754-fd39615932ca?w=600&h=600&fit=crop',
-    type: 'image',
-  },
-  {
-    id: '5',
-    title: 'TikTok AR Filter',
-    category: 'filters',
-    image: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=600&h=600&fit=crop',
-    type: 'image',
-  },
-  {
-    id: '6',
-    title: 'Music Video Concept',
-    category: 'video',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=600&fit=crop',
-    type: 'image',
-  },
-  {
-    id: '7',
-    title: 'Digital Mural Design',
-    category: 'design',
-    image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=600&fit=crop',
-    type: 'image',
-  },
-  {
-    id: '8',
-    title: '3D Motion Graphics',
-    category: 'illustration',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8e7d3e32?w=600&h=600&fit=crop',
-    type: 'image',
-  },
+  { id: '1', title: 'Cover Art 0', category: 'design', image: '/portfolio/cover-arts/cover-art0.jpg', type: 'image' },
+  { id: '2', title: 'VFX Explosion', category: 'video', image: '/portfolio/videos/video0.mp4', type: 'video' },
+  { id: '3', title: 'Logo 0', category: 'design', image: '/portfolio/logos/logo0.jpg', type: 'image' },
+  { id: '4', title: 'Logo 1', category: 'design', image: '/portfolio/logos/logo1.jpg', type: 'image' },
+  { id: '5', title: 'Ozzy Illustration', category: 'illustration', image: '/portfolio/ilustrations/ozzy.jpg', type: 'image' },
+  { id: '6', title: 'Piccolo Illustration', category: 'illustration', image: '/portfolio/ilustrations/piccolo.jpg', type: 'image' },
+  { id: '7', title: 'Remsy Illustration', category: 'illustration', image: '/portfolio/ilustrations/remsy.jpg', type: 'image' },
+  { id: '8', title: 'Video 1', category: 'video', image: '/portfolio/videos/video1.mp4', type: 'video' },
 ]
 
 const categories = [
@@ -84,20 +36,17 @@ export function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null)
 
-  const filteredItems = activeCategory === 'all'
-    ? portfolioItems
-    : portfolioItems.filter(item => item.category === activeCategory)
+  const filteredItems =
+    activeCategory === 'all'
+      ? portfolioItems
+      : portfolioItems.filter((item) => item.category === activeCategory)
 
   return (
     <section id="portafolio" className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
-            Portafolio
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Descubre nuestros trabajos más destacados
-          </p>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">Portafolio</h2>
+          <p className="text-lg text-muted-foreground">Descubre nuestros trabajos más destacados</p>
         </div>
 
         {/* Category Tabs */}
@@ -118,10 +67,7 @@ export function Portfolio() {
         </div>
 
         {/* Portfolio Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item) => (
               <motion.div
@@ -134,16 +80,32 @@ export function Portfolio() {
                 className="cursor-pointer group"
               >
                 <div className="relative h-64 rounded-lg overflow-hidden bg-card border border-border hover:border-primary transition-all">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <p className="font-semibold">{item.title}</p>
-                    </div>
+                  {item.type === 'video' ? (
+                    <>
+                      {/* Thumbnail generada por el browser del primer frame */}
+                      <video
+                        src={item.image}
+                        preload="metadata"
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 pointer-events-none"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                        <div className="bg-black/60 rounded-full p-4">
+                          <Play className="w-10 h-10 text-white fill-white" />
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-start p-4">
+                    <p className="font-semibold text-white">{item.title}</p>
                   </div>
                 </div>
               </motion.div>
@@ -176,21 +138,30 @@ export function Portfolio() {
                 <X className="w-6 h-6 text-white" />
               </button>
 
-              <div className="relative w-full h-96 sm:h-[500px]">
-                <Image
-                  src={selectedItem.image}
-                  alt={selectedItem.title}
-                  fill
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative w-full h-96 sm:h-[500px] bg-black flex items-center justify-center">
+                {selectedItem.type === 'video' ? (
+                  <video
+                    key={selectedItem.id}
+                    src={selectedItem.image}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <Image
+                    src={selectedItem.image}
+                    alt={selectedItem.title}
+                    fill
+                    className="object-cover"
+                  />
+                )}
               </div>
 
               <div className="p-6 bg-card">
-                <h3 className="text-2xl font-bold mb-2 text-foreground">
-                  {selectedItem.title}
-                </h3>
+                <h3 className="text-2xl font-bold mb-2 text-foreground">{selectedItem.title}</h3>
                 <p className="text-muted-foreground">
-                  {categories.find(c => c.id === selectedItem.category)?.label}
+                  {categories.find((c) => c.id === selectedItem.category)?.label}
                 </p>
               </div>
             </motion.div>
