@@ -2,52 +2,76 @@
 
 import { motion } from "framer-motion"
 import { ArrowDown } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export function Hero() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise">
       {/* Animated background shapes */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Left accent gradient */}
-        <motion.div
-          className="absolute top-20 -left-20 w-72 h-72 bg-primary rounded-full mix-blend-screen filter blur-3xl opacity-20 dark:opacity-15"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+        {isMobile ? (
+          <div className="absolute top-20 -left-20 w-72 h-72 bg-primary rounded-full filter blur-3xl opacity-20 dark:opacity-15 hero-blob" />
+        ) : (
+          <motion.div
+            className="absolute top-20 -left-20 w-72 h-72 bg-primary rounded-full filter blur-3xl opacity-20 dark:opacity-15 hero-blob"
+            animate={{
+              x: [0, 100, 0],
+              y: [0, -50, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        )}
         {/* Right accent gradient */}
-        <motion.div
-          className="absolute bottom-20 -right-20 w-96 h-96 bg-secondary rounded-full mix-blend-screen filter blur-3xl opacity-15 dark:opacity-10"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        {/* Center glow - key gradient for visual appeal */}
-        <motion.div
-          key="center-glow"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary rounded-full mix-blend-screen filter blur-[100px] opacity-10 dark:opacity-5"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.15, 0.1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+        {isMobile ? (
+          <div className="absolute bottom-20 -right-20 w-96 h-96 bg-secondary rounded-full filter blur-3xl opacity-15 dark:opacity-10 hero-blob" />
+        ) : (
+          <motion.div
+            className="absolute bottom-20 -right-20 w-96 h-96 bg-secondary rounded-full filter blur-3xl opacity-15 dark:opacity-10 hero-blob"
+            animate={{
+              x: [0, -100, 0],
+              y: [0, 50, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        )}
+        {/* Center glow - simplified on mobile */}
+        {isMobile ? (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary rounded-full filter blur-[100px] opacity-10 dark:opacity-5 hero-blob" />
+        ) : (
+          <motion.div
+            key="center-glow"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary rounded-full filter blur-[100px] opacity-10 dark:opacity-5 hero-blob"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.15, 0.1],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        )}
       </div>
 
       {/* Content */}

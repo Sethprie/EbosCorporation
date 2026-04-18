@@ -218,6 +218,21 @@
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* Optimized hero blob animations */
+.hero-blob {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Disable noise on mobile for better performance */
+@media (max-width: 768px) {
+  .noise::before {
+    display: none;
+  }
+}
+
 /* Noise texture overlay */
 .noise::before {
   content: "";
