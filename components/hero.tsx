@@ -81,7 +81,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold tracking-tighter mb-2 break-words"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-2 break-words"
         >
           <span className="text-primary">EBOS</span>
           <br />
@@ -93,7 +93,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-base sm:text-lg md:text-xl text-secondary font-mono mb-6 px-2"
+          className="text-xl sm:text-2xl md:text-3xl text-secondary font-mono mb-6 px-2"
         >
           Lleva tu visual a un nuevo nivel
         </motion.p>
@@ -103,7 +103,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xs sm:max-w-lg md:max-w-2xl mx-auto mb-8 px-2"
+          className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-sm sm:max-w-md md:max-w-2xl mx-auto mb-8 px-2"
         >
           Transforma tu creatividad con Insane Designs Entertainment
         </motion.p>
@@ -113,12 +113,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex flex-wrap justify-center gap-2 mb-8 px-2"
+          className="flex flex-wrap justify-center gap-3 mb-8 px-2"
         >
           {["Artista Visual", "Diseñador", "Director", "VFX"].map((role, index) => (
             <span
               key={role}
-              className={`px-2 py-1 border text-xs font-mono uppercase tracking-wider ${
+              className={`px-3 py-2 border text-sm font-mono uppercase tracking-wider ${
                 index % 2 === 0 ? "border-primary text-primary" : "border-secondary text-secondary"
               }`}
             >
