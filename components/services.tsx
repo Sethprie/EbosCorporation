@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
+import Link from "next/link"
 import { 
   Palette, 
   Film, 
@@ -12,7 +13,8 @@ import {
   PaintBucket,
   Box,
   Layers,
-  Wand2
+  Wand2,
+  ArrowRight
 } from "lucide-react"
 
 const services = [
@@ -115,9 +117,18 @@ export function Services() {
                   {service.description}
                 </p>
                 <div className="pt-4 border-t border-border">
-                  <span className="text-secondary font-mono font-bold text-sm">
-                    {service.price}
-                  </span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-secondary font-mono font-bold text-sm">
+                      {service.price}
+                    </span>
+                    <Link
+                      href="#contacto"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 rounded-full text-primary text-xs font-mono transition-all duration-300"
+                    >
+                      Cotizar
+                      <ArrowRight size={12} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>

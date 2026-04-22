@@ -12,6 +12,7 @@ const navItems = [
   { name: "Historia", href: "#historia" },
   { name: "Colaboraciones", href: "#colaboraciones" },
   { name: "Contacto", href: "#contacto" },
+  { name: "Bio", href: "/bio" },
 ]
 
 export function Navigation() {
