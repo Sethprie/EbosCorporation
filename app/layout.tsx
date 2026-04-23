@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Insane - @remsyto' }],
   creator: 'EBOS Corporation',
   verification: {
-    google: '3K9CaldRn3VX2p4i7EI82cUYF9J1nri3XKgw8I1HIIs',
+    google: 'bllGUWYStOwlVcPhMGAGnOCKIKACXYOJiprnjRMwWYE',
   },
   icons: {
     icon: [
