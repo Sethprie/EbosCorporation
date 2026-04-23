@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   keywords: ['diseño gráfico', 'ilustración', 'VFX', 'animación', 'arte digital', 'graffiti', 'murales', 'cover art'],
   authors: [{ name: 'Insane - @remsyto' }],
   creator: 'EBOS Corporation',
+  verification: {
+    google: '3K9CaldRn3VX2p4i7EI82cUYF9J1nri3XKgw8I1HIIs',
+  },
   icons: {
     icon: [
       {
