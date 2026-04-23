@@ -24,6 +24,10 @@ export const metadata: Metadata = {
   verification: {
     google: 'bllGUWYStOwlVcPhMGAGnOCKIKACXYOJiprnjRMwWYE',
   },
+  metadataBase: new URL('https://ebos-corporation.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [
       {
