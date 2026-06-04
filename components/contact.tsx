@@ -8,8 +8,8 @@ import { Instagram, Facebook, Music2, Send } from "lucide-react"
 const socialLinks = [
   {
     name: "Instagram",
-    handle: "@remsyto",
-    url: "https://instagram.com/remsyto",
+    handle: "@remsytoo",
+    url: "https://instagram.com/remsytoo",
     icon: Instagram,
     color: "#E4405F",
   },
